@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+	<t t-extend="HrAttendanceMyMainMenu">
+		<t t-jquery="*[t-esc='widget.employee.name']" t-operation="after">
+			<t t-if="widget.contacts and widget.contacts.contact_ids">
+				<h3 name="contact_select" class="ml32 row">
+					<label for="contactSelect" class="col-5 o_light_label">Contacto:</label>
+					<select class="col-7" name="contact_id" id="contactSelect">
+						<option selected="selected" value=""></option>
+						<t t-foreach="widget.contacts.contact_ids" t-as="contact">
+							<t t-if="widget.contacts.current_contact_id.id == contact.id">
+								<option selected="selected" t-att-value="contact.id"><t t-out="contact.name" /></option>
+							</t>
+							<t t-else="">
+								<option t-att-value="contact.id"><t t-out="contact.name" /></option>
+							</t>
+						</t>
+					</select>
+				</h3>
+			</t>
+		</t>
+	</t>
+</templates>
